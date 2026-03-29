@@ -1,0 +1,25 @@
+gather_national_news_task:
+  description: >
+    Conduct a comprehensive web search to retrieve the latest and most critical news headlines regarding {country}. 
+    
+    You must identify the top 5 most important current events. For each of these 5 stories, you must perform the following extraction and summarization steps:
+    1. Extract the exact, official headline of the news article.
+    2. Retrieve the direct, clickable URL to the full article.
+    3. Identify the official name of the publishing news agency (e.g., Reuters, BBC, AP).
+    4. Read the content of the article and synthesize a concise, well-written 1-paragraph summary (approx. 3-4 sentences) that captures the core facts of the story.
+    
+    Ensure all sources are reputable and the information strictly pertains to the current events in {country}.
+  expected_output: >
+    A strictly formatted JSON array containing exactly 5 objects. The output must be valid JSON only, with no Markdown formatting blocks (like ```json) or conversational text outside the JSON structure. 
+    
+    The JSON must adhere strictly to the following schema:
+    [
+      {
+        "headline": "Exact headline text here",
+        "url": "[https://www.example.com/article-link](https://www.example.com/article-link)",
+        "news_summary": "A one-paragraph summary of the news story goes here.",
+        "news_agency": "Name of the Publisher"
+      }
+    ]
+  agent: news_reporter
+
