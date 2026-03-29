@@ -8,11 +8,16 @@ from pydantic import BaseModel, Field
 # you can use the @before_kickoff and @after_kickoff decorators
 # https://docs.crewai.com/concepts/crews#example-crew-class-with-decorators
 
+
+
 class NewsReporter(BaseModel):
     headline: str = Field(description = "Headline for the news")
     url: str = Field(description = "URL of the news website")
     news_summary: str = Field(description = "Summary of the news")
     news_agency: str = Field(description = "Name of the news agency that published")
+
+class NewsReporterList(BaseModel):
+    news: List[NewsReporter] = Field(description = "List of news articles")
 
 @CrewBase
 class NewsAgent():
@@ -49,7 +54,7 @@ class NewsAgent():
         return Task(
             config=self.tasks_config['gather_national_news_task'], # type: ignore[index]
             output_file = "news.json",
-            output_json = NewsReporter
+            output_json =  NewsReporterList
         )
 
 
