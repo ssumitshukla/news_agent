@@ -36,7 +36,7 @@ class NewsAgent():
     def news_reporter(self) -> Agent:
         return Agent(
             config=self.agents_config['news_reporter'],
-            mcps = ["https://mcp.tavily.com/mcp/?tavilyApiKey=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"],
+            mcps = [],
             verbose=True
         )
 
